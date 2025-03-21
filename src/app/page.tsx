@@ -1,5 +1,7 @@
 "use client";
 
+import CardComponent from "@/components/CardComponent";
+import NavbarComponent from "@/components/NavbarComponent";
 import { useCountries } from "@/hooks/fetchCountries";
 
 export default function Home() 
@@ -10,13 +12,12 @@ export default function Home()
   if (isError) return <p>Error loading data</p>;
 
   return (
-    <div>
-      <ul>
-        {data.map((country: any) => (
-          <p key={country.name.common}>{country.name.common}</p>
-        ))}
-      </ul>
-      
-    </div>
+    <>
+      <NavbarComponent />
+
+      <div className="container mx-auto px-4">
+        <CardComponent countriesList={data} />
+      </div>
+    </>
   );
 }
